@@ -7,7 +7,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-deepblue text-gray-300 font-[Poppins] uppercase py-6 relative">
+    <nav className="bg-deepblue text-gray-300 font-calibri uppercase py-6 relative">
       <div className="container mx-auto flex flex-row justify-around items-center">
         <div className="flex justify-between items-center md:w-auto">
           <Link to="/">
@@ -28,13 +28,13 @@ export function Navbar() {
         </div>
         <div
           className={`absolute top-full left-0 w-full bg-deepblue shadow-md sm:p-4 transition-all duration-300 ease-in-out ${
-            isOpen ? "block" : "hidden"
+            isOpen ? "block opacity-95" : "hidden"
           } md:static md:flex md:w-auto md:shadow-none`}
         >
           <ul
             className={`${
               isOpen ? "flex" : "hidden"
-            } flex-col md:flex md:flex-row md:space-x-4 text-base pl-10 md:pl-0 pb-5 md:pb-0 mt-4 md:mt-0 whitespace-nowrap gap-2 md:justify-center md:flex-wrap`}
+            } flex-col md:flex md:flex-row md:space-x-4 text-base pl-10 md:pl-0 pb-5 md:pb-0npm mt-4 md:mt-0 whitespace-nowrap gap-2 md:justify-center md:flex-wrap`}
           >
             <li>
               <Link to="/" className="hover:text-white">

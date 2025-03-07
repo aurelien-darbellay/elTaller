@@ -11,7 +11,7 @@ export default {
         montserrat: ["Montserrat", "sans-serif"],
       },
       fontSize: {
-        sm: "2rem",
+        base: "0.9rem",
       },
     },
     plugins: [],
