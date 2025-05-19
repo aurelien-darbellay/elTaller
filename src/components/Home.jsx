@@ -1,14 +1,20 @@
-import Header from "./Header";
+import CardSet from "./cards/CardSet";
+import Header from "./header/Header"; // adjust the path if needed
 
 export function Home() {
+  const pictures = [
+    "pictures/indoor/claseDesbande.jpg",
+    "pictures/indoor/tadasPamela.jpg",
+    "pictures/indoor/desbandeSoloMask.jpg",
+  ];
   return (
     <>
       <Header
-        title="Trapezoid Header"
-        image="https://www.eltallerswing.com/wp-content/uploads/2024/03/IMG_3294-zoom-y-posicion-scaled.jpg"
+        title="Celebrant el Jazz a Barcelona"
+        images={pictures}
         color="#30646c"
-        shape="trapezoid"
       />
+      <CardSet xOffSetDesk="30" xOffSetCell="3" pictures={pictures} />
     </>
   );
 }
