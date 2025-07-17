@@ -1,13 +1,12 @@
 import { useTheme } from "../../contexts/ThemeContext";
 import DynamicCard from "../cards/DynamicCard";
-import CardSet from "../cards/CardSet";
 import Carousel from "../Carousel";
 import CardSetDesktop from "../cards/CardSetDesktop";
 
 const DesktopHeader = ({ title, image, images, color }) => {
   const { primaryBright, primaryMedium, primaryLight } = useTheme();
 
-  const textClasses = `A <strong>El Taller</strong> t’oferim classes de <em>Lindy Hop</em> i altres balls del jazz per a tots els nivells!
+  const textClasses = `A <strong>El Taller</strong> t’oferim classes de <em>Lindy Hop</em> i altres balls del jazz continuum per a tots els nivells!
   Vine a gaudir del swing i a compartir la passió pel ball en un ambient
   proper i comunitari.`;
 

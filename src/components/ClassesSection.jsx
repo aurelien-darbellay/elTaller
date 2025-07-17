@@ -1,3 +1,4 @@
+import ClassDescription from "./ClassDescription";
 import SectionSchedule from "./SectionSchedule";
 
 export function ClassesSection() {
@@ -146,6 +147,7 @@ export function ClassesSection() {
   return (
     <section className="">
       <div className="h-30"></div>
+      <ClassDescription />
       <SectionSchedule scheduleData={scheduleData} />
     </section>
   );

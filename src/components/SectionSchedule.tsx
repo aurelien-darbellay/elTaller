@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../contexts/ThemeContext"; // Adjust path if needed
+import { useTheme } from "../contexts/ThemeContext";
 import { MapPin } from "lucide-react";
 
 const SectionSchedule = ({ scheduleData }) => {
@@ -9,45 +9,80 @@ const SectionSchedule = ({ scheduleData }) => {
   if (!scheduleData || scheduleData.length === 0) return null;
 
   const filteredSchedule = scheduleData.filter((day) => day.classes.length > 0);
-
   const sortedSchedule = [...filteredSchedule].sort(
     (a, b) => a.order - b.order
   );
-
   const sortedWithClasses = sortedSchedule.map((day) => ({
     ...day,
     classes: [...day.classes].sort((a, b) =>
       a.starttime.localeCompare(b.starttime)
     ),
   }));
-
   const maxRows =
     Math.max(...sortedWithClasses.map((d) => d.classes.length)) + 1;
 
+  const getColor = ({ dance, level }) => {
+    const d = dance.toLowerCase();
+    const l = level.toLowerCase();
+    if (d === "lindy hop") {
+      if (l === "iniciació") return initiation;
+      if (l === "team") return team;
+      return lindyHop;
+    }
+    if (d === "solo jazz") return soloJazz;
+    return turquoise;
+  };
+
   return (
-    <div
-      className="w-full"
-      style={
-        {
-          //backgroundImage: `linear-gradient(135deg, creme 0%, #ffffff 100%)`,
-        }
-      }
-    >
-      <div className="container mx-auto">
-        {/* Title */}
-        <h2 className="font-header text-4xl p-4" style={{ color: primaryDeep }}>
+    <div className="w-full">
+      <div className="container mx-auto px-4">
+        <h2
+          className="font-header text-4xl py-6"
+          style={{ color: primaryDeep }}
+        >
           Horaris
         </h2>
 
-        {/* Schedule Grid */}
+        {/* Mobile layout */}
+        <div className="block md:hidden space-y-6">
+          {sortedWithClasses.map((day) => (
+            <div key={day.day} className="border rounded-md p-4 shadow">
+              <h3 className="text-xl font-bold text-center mb-3">
+                {day.day.toUpperCase()}
+              </h3>
+              {day.classes.map((classObj, idx) => (
+                <div
+                  key={idx}
+                  className="mb-3 rounded p-3 text-sm text-black"
+                  style={{ backgroundColor: getColor(classObj) }}
+                >
+                  <div className="font-semibold">{classObj.starttime}</div>
+                  <div className="uppercase font-bold">{classObj.dance}</div>
+                  <div className="italic">{classObj.level}</div>
+                  {classObj.sala?.name && classObj.sala?.url && (
+                    <a
+                      href={classObj.sala.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 mt-1 text-xs underline"
+                    >
+                      <MapPin size={14} /> {classObj.sala.name}
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop layout */}
         <div
-          className="grid gap-2 p-4 rounded-md font-info"
+          className="hidden md:grid gap-2 p-4 rounded-md font-info"
           style={{
             gridTemplateColumns: `repeat(${sortedWithClasses.length}, minmax(0, 1fr))`,
             gridTemplateRows: `repeat(${maxRows}, minmax(0, auto))`,
           }}
         >
-          {/* Day headers */}
           {sortedWithClasses.map((day) => (
             <div
               key={`header-${day.day}`}
@@ -57,56 +92,28 @@ const SectionSchedule = ({ scheduleData }) => {
             </div>
           ))}
 
-          {/* Class cells */}
           {Array.from({ length: maxRows - 1 }).map((_, rowIdx) =>
             sortedWithClasses.map((day) => {
               const classObj = day.classes[rowIdx];
-
-              if (!classObj) {
-                return <div key={`${day.day}-${rowIdx}`} />;
-              }
-
-              const { dance, starttime, level, sala } = classObj;
-
-              let bgColor = turquoise;
-              let textColor = "text-black";
-
-              if (dance.toLowerCase() === "lindy hop") {
-                bgColor = lindyHop;
-                //textColor = "text-white";
-                if (level.toLowerCase() === "iniciació") {
-                  bgColor = initiation;
-                  //textColor = "text-black";
-                }
-                if (level.toLowerCase() == "team") {
-                  bgColor = team;
-                }
-              } else if (dance.toLowerCase() === "solo jazz") {
-                bgColor = soloJazz;
-                //textColor = "text-black";
-              }
-
+              if (!classObj) return <div key={`${day.day}-${rowIdx}`} />;
+              const bgColor = getColor(classObj);
               return (
                 <div
                   key={`${day.day}-${rowIdx}`}
-                  className={`rounded p-2 text-sm text-center hover:shadow-custom ${textColor}`}
+                  className="rounded p-2 text-sm text-center hover:shadow-custom text-black"
                   style={{ backgroundColor: bgColor }}
                 >
-                  <div>{starttime}</div>
-                  <div className="font-bold">{dance.toUpperCase()}</div>
-                  <div className="italic">{level}</div>
-
-                  {sala?.name && sala?.url && (
+                  <div>{classObj.starttime}</div>
+                  <div className="font-bold uppercase">{classObj.dance}</div>
+                  <div className="italic">{classObj.level}</div>
+                  {classObj.sala?.name && classObj.sala?.url && (
                     <a
-                      href={sala.url}
+                      href={classObj.sala.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center justify-center gap-1 mt-1 text-xs no-underline hover:underline hover:text-blue-200 ${
-                        textColor === "text-white" ? "text-white" : "text-black"
-                      }`}
+                      className="flex items-center justify-center gap-1 mt-1 text-xs underline"
                     >
-                      <MapPin size={14} className="inline-block" />
-                      {sala.name}
+                      <MapPin size={14} /> {classObj.sala.name}
                     </a>
                   )}
                 </div>

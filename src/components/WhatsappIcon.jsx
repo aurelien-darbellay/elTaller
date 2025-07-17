@@ -4,7 +4,7 @@ const WhatsappIcon = () => {
   return (
     <div className="z-[9999]">
       <a
-        href="https://wa.me/34633832789"
+        href="https://wa.me/34613040716"
         target="_blank"
         rel="noopener noreferrer"
         className="relative flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full hover:shadow-custom"

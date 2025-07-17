@@ -41,13 +41,24 @@ function MobileNavbar({ isTop, menuItems, logo }) {
         <ul className="flex flex-col text-base pb-5 whitespace-normal gap-1 z-[9999]">
           {menuItems.map((path, idx) => (
             <li key={idx} className="relative p-2 bg-white active:shadow-none">
-              <Link
-                to={`/${path}`}
-                className="flex justify-center items-center text-center hover:text-white"
-                onClick={() => setIsOpen(false)}
-              >
-                {path.replace("-", " ")}
-              </Link>
+              {path === "inscripcions" ? (
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfzhuqyNITIBPof_PKsquB3rXCVcLyYj0WGYk1YAOTzq0U8rQ/viewform?usp=header"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex justify-center items-center text-center hover:text-white"
+                >
+                  Inscripcions
+                </a>
+              ) : (
+                <Link
+                  to={`/${path}`}
+                  className="flex justify-center items-center text-center hover:text-white"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {path.replace("-", " ")}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

@@ -2,12 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import { Home } from "./components/Home";
 import { ClassesSection } from "./components/ClassesSection";
-import { ContactForm } from "./components/ContactForm";
+import ContactForm from "./components/ContactForm";
 import { Footer } from "./components/Footer";
 import WhatsappIcon from "./components/WhatsappIcon";
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import SignupButton from "./components/SignUpButton";
 import ButtonGroup from "./components/ButtonGroup";
+import Cultura from "./components/Cultura";
 
 export default function App() {
   return (
@@ -23,7 +24,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/classes" element={<ClassesSection />} />
-              <Route path="/contact" element={<ContactForm />} />
+              <Route path="/contacte" element={<ContactForm />} />
+              <Route path="racó-cultura" element={<Cultura />} />
             </Routes>
           </main>
           <Footer />
