@@ -1,46 +1,38 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const DynamicCard = ({ title, color = "pink", image, text }) => {
   const cardRef = useRef(null);
-
-  const handleMouseEnter = () => {
-    cardRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    });
-  };
-
+  const [open, setOpen] = useState(false);
   return (
     <div
       ref={cardRef}
-      onMouseEnter={handleMouseEnter}
       className={`
-        group relative w-[90%] md:w-[30%] rounded shadow-custom hover:shadow-none cursor-pointer h-[10vh]
+        relative ${
+          !open ? "w-[20%]" : "w-[35%]"
+        } rounded shadow-custom hover:shadow-none cursor-pointer h-[8vh]
       `}
     >
       {/* Default centered title overlay */}
       <div
-        className="
-          absolute inset-0 flex items-center justify-center
-          text-white text-4xl uppercase text-shadow-lg font-header
-          transition-opacity duration-500 opacity-90
-          group-hover:opacity-0 rounded
-        "
+        className={`absolute inset-0 flex items-center justify-center
+          text-white text-2xl uppercase text-shadow-lg font-header
+          transition-opacity duration-200
+          ${open ? "opacity-0 z-0" : "opacity-100 z-1"} rounded`}
         style={{ backgroundColor: color }}
+        onClick={() => setOpen((prev) => !prev)}
       >
         {title}
       </div>
 
       {/* Hover content overlay (same design as before) */}
       <div
-        className="
-          opacity-0 group-hover:opacity-100
-          transition-opacity duration-500
-          relative z-10 -top-30
+        className={`${!open ? "opacity-0 z-0" : "opacity-100 z-20 -top-40"}
+          transition-opacity duration-200
+          relative
           flex flex-col rounded
-        "
+        `}
         style={{ backgroundColor: color }}
+        onClick={() => setOpen((prev) => !prev)}
       >
         {/* Title at the top */}
         <h3
@@ -53,9 +45,9 @@ const DynamicCard = ({ title, color = "pink", image, text }) => {
         </h3>
 
         {/* Image + Text container */}
-        <div className="flex flex-row md:flex-col items-center m-3">
+        <div className="flex flex-col items-center m-3">
           {/* Image */}
-          <div className="w-[40%] h-[50%] ml-3 mr-3 mb-3 rounded-md overflow-hidden md:w-full">
+          <div className="w-[80%] ml-3 mr-3 mb-3 rounded-md overflow-hidden">
             <img
               src={image}
               alt={title}

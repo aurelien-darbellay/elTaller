@@ -17,7 +17,7 @@ export default function Carousel({ images }) {
           <img
             src={imgSrc}
             alt={`Slide ${index}`}
-            className="absolute object-cover h-full w-full"
+            className="absolute object-cover h-full w-full opacity-70"
           />
         </SwiperSlide>
       ))}

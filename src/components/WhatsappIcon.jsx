@@ -1,15 +1,16 @@
-import { FaWhatsapp } from "react-icons/fa";
+import { FaCircle, FaWhatsapp } from "react-icons/fa";
 
 const WhatsappIcon = () => {
   return (
-    <div className="fixed bottom-11 right-5 md:right-10 z-[9999] bg-green-600 rounded-md">
+    <div className="z-[9999]">
       <a
         href="https://wa.me/34633832789"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-3xl md:text-7xl text-green-400 hover:text-green-300"
+        className="relative flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full hover:shadow-custom"
       >
-        <FaWhatsapp className="text-white" />
+        <FaCircle className="absolute text-green-600 w-full h-full" />
+        <FaWhatsapp className="relative text-white w-6 h-6 md:w-8 md:h-8" />
       </a>
     </div>
   );

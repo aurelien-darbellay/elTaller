@@ -2,6 +2,7 @@ import { useTheme } from "../../contexts/ThemeContext";
 import DynamicCard from "../cards/DynamicCard";
 import CardSet from "../cards/CardSet";
 import Carousel from "../Carousel";
+import CardSetDesktop from "../cards/CardSetDesktop";
 
 const DesktopHeader = ({ title, image, images, color }) => {
   const { primaryBright, primaryMedium, primaryLight } = useTheme();
@@ -11,13 +12,11 @@ const DesktopHeader = ({ title, image, images, color }) => {
   proper i comunitari.`;
 
   return (
-    <header className="hidden md:block relative w-full h-200 shadow-md overflow-visible">
+    <header className="hidden md:block relative w-full h-150 shadow-md overflow-visible">
       {/* CLIPPED BACKGROUND LAYER */}
       <div
         className="absolute inset-0 z-0 overflow-hidden"
         style={{
-          clipPath:
-            "polygon(0% 0%, 100% 0%, 100% 80%, 80% 100%, 20% 100%, 0% 90%)",
           background: !image && !images ? color || "gray" : undefined,
         }}
       >
@@ -35,12 +34,9 @@ const DesktopHeader = ({ title, image, images, color }) => {
       </div>
 
       {/* UNCLIPPED CONTENT */}
-      <div className="relative z-10 flex flex-col items-center w-full h-full">
-        <div className="mt-110">
-          {/* <div className="text-center text-white text-shadow-lg font-header">
-            {title}
-          </div> */}
-          <CardSet xOffSetDesk="20" xOffSetCell="20">
+      <div className="container mx-auto h-full flex px-4">
+        <div className="pt-70 z-10 flex flex-col justify-center items-start w-full h-full">
+          <CardSetDesktop>
             <DynamicCard
               title="classes"
               color={primaryBright}
@@ -59,7 +55,7 @@ const DesktopHeader = ({ title, image, images, color }) => {
               image={images[2]}
               text={textClasses}
             />
-          </CardSet>
+          </CardSetDesktop>
         </div>
       </div>
     </header>

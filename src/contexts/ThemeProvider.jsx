@@ -3,15 +3,20 @@ import ThemeContext from "./ThemeContext";
 export const ThemeProvider = ({ children }) => {
   // for now just use the defaults
   const theme = {
-    primaryDeep: "#771677ff",
+    primaryDeep: "#da75daff",
     primaryMedium: "#920c87ff",
-    primaryBright: "#f1189eff",
+    primaryBright: "#e662b3ff",
     primaryLight: "#c95896ff",
     creme: "creme",
     pink: "pink",
     deeppink: "deeppink",
     grey: "grey",
     gold: "gold",
+    turquoise: "#70f5e3ff",
+    initiation: "#b5ff55ff",
+    soloJazz: "hsla(0, 100%, 90%, 1.00)",
+    lindyHop: "#fcf2f1ff",
+    team: "#f3c954ff",
   };
 
   return (

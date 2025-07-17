@@ -6,6 +6,8 @@ import { ContactForm } from "./components/ContactForm";
 import { Footer } from "./components/Footer";
 import WhatsappIcon from "./components/WhatsappIcon";
 import { ThemeProvider } from "./contexts/ThemeProvider";
+import SignupButton from "./components/SignUpButton";
+import ButtonGroup from "./components/ButtonGroup";
 
 export default function App() {
   return (
@@ -13,7 +15,10 @@ export default function App() {
       <div className="flex flex-col min-h-screen">
         <ThemeProvider>
           <Navbar />
-          <WhatsappIcon />
+          <ButtonGroup>
+            <SignupButton />
+            <WhatsappIcon />
+          </ButtonGroup>
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />

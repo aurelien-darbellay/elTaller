@@ -10,9 +10,9 @@ function MobileNavbar({ isTop, menuItems, logo }) {
   return (
     <nav
       className={`uppercase z-[999]  w-full fixed top-0   ${
-        isTop ? "h-23 py-1" : "h-15 opacity-85"
+        isTop ? "h-23 py-1" : `h-15 ${isOpen ? "opacity-100" : "opacity-85"}`
       } transition-all duration-300 ease-in-out md:hidden`}
-      style={{ backgroundColor: primaryDeep }}
+      style={{ backgroundColor: "white" }}
     >
       <div className="mx-5 h-full flex justify-between items-center">
         <div
@@ -20,13 +20,13 @@ function MobileNavbar({ isTop, menuItems, logo }) {
             isTop ? "" : "hidden"
           }`}
         >
-          <Link to="/" className="h-full flex-[1_1_0%]">
+          <Link to="/" className="h-full py-3 flex-[1_1_0%]">
             <img src={logo} alt="El Taller" className="h-full " />
           </Link>
         </div>
 
         <button
-          className="h-full mt-2 text-3xl text-white md:hidden  p-4"
+          className="h-full mt-2 text-3xl text-black md:hidden  p-4"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -35,12 +35,12 @@ function MobileNavbar({ isTop, menuItems, logo }) {
 
       <div
         className={`absolute top-7/8 w-full p-4 transition-all duration-300 ease-in-out ${
-          isOpen ? "scale-100 opacity-95 z-[9999]" : "scale-0"
+          isOpen ? "scale-100 opacity-100 z-[9999]" : "scale-0"
         }`}
       >
         <ul className="flex flex-col text-base pb-5 whitespace-normal gap-1 z-[9999]">
           {menuItems.map((path, idx) => (
-            <li key={idx} className="relative p-2 bg-gold active:shadow-none">
+            <li key={idx} className="relative p-2 bg-white active:shadow-none">
               <Link
                 to={`/${path}`}
                 className="flex justify-center items-center text-center hover:text-white"
