@@ -1,15 +1,9 @@
-import { useTheme } from "../../contexts/ThemeContext";
-import Card from "./Card";
-
-const CardSet = ({ xOffSetCell, xOffSetDesk, pictures }) => {
-  const { primaryBright, primaryMedium, primaryLight } = useTheme();
+const CardSet = ({ xOffSetCell, xOffSetDesk, children }) => {
   return (
     <div
-      className={`relative flex flex-col items-center sm:flex-row  mt-${xOffSetCell} md:-mt-${xOffSetDesk} font-inter justify-center gap-5 mx-5`}
+      className={`relative flex flex-col items-center sm:flex-row  mt-${xOffSetCell} md:mt-${xOffSetDesk} font-inter justify-center gap-3 md:gap-10 mx-5`}
     >
-      <Card title="classes" color={primaryBright} image={pictures[0]} />
-      <Card title="soc principiant" color={primaryMedium} image={pictures[1]} />
-      <Card title="trobades" color={primaryLight} image={pictures[2]} />
+      {children}
     </div>
   );
 };

@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
+import { useTheme } from "../../contexts/ThemeContext";
 
 function DesktopNavbar({ isTop, menuItems, logo }) {
+  const { primaryDeep } = useTheme();
   return (
     <nav
-      className={`hidden md:block bg-deepblue uppercase z-[999] w-full transition-all duration-300 ease-in-out ${
-        isTop ? "fixed py-3 h-35" : "fixed top-0 opacity-80 h-20"
+      className={`hidden md:block uppercase z-[999] w-full transition-all duration-300 ease-in-out ${
+        isTop ? "fixed h-20" : "fixed top-0 opacity-80 h-20"
       }`}
+      style={{ backgroundColor: primaryDeep }}
     >
       <div className=" mx-2 lg:mx-10 h-full flex">
         <div

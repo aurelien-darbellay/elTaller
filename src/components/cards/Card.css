@@ -1,0 +1,14 @@
+.transition-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.clip-show {
+  opacity: 1;
+  z-index: 1;
+}
+
+.clip-hide {
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  opacity: 0;
+  z-index: 0;
+}

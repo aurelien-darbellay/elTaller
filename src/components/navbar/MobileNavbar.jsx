@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useTheme } from "../../contexts/ThemeContext";
 
 function MobileNavbar({ isTop, menuItems, logo }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { primaryDeep } = useTheme();
 
   return (
     <nav
-      className={`bg-deepblue uppercase z-[999]  w-full fixed top-0   ${
-        isTop ? "h-30 py-3" : "h-15 opacity-85"
+      className={`uppercase z-[999]  w-full fixed top-0   ${
+        isTop ? "h-23 py-1" : "h-15 opacity-85"
       } transition-all duration-300 ease-in-out md:hidden`}
+      style={{ backgroundColor: primaryDeep }}
     >
       <div className="mx-5 h-full flex justify-between items-center">
         <div

@@ -31,6 +31,7 @@ export default {
         montserrat: ["Montserrat", "sans-serif"],
         sigmar: ["Sigmar"],
         inter: ["Inter"],
+        header: ["Poppins", "sans-serif"],
       },
       fontSize: {
         base: "0.9rem",
@@ -60,6 +61,18 @@ export default {
         },
         ".shadow-custom": {
           "box-shadow": "3px 3px 4px rgba(0, 0, 0, 0.8)",
+        },
+        ".font-header": {
+          "font-family": "'Poppins', sans-serif",
+          "font-weight": "900",
+          "font-size": "5rem",
+          "text-transform": "uppercase",
+        },
+        ".font-info": {
+          "font-family": "'Poppins', sans-serif",
+          "font-size": "1rem",
+          color: "black",
+          "text-align": "justify",
         },
       });
     },
