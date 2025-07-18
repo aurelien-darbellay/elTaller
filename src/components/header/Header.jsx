@@ -7,6 +7,8 @@ const Header = ({ title, color }) => {
     "pictures/indoor/SocPrincipiant.jpg",
     "pictures/indoor/CanTravi1.jpg",
     "pictures/indoor/EstelaIñaki_Olivo.jpg",
+    "pictures/outdoor/Canyelles1.jpg",
+    "pictures/indoor/CanTravi2.jpg",
   ];
   const textPrincipiant = <TextPrincipiant />;
   return (
