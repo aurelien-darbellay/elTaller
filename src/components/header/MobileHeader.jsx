@@ -5,7 +5,7 @@ import Carousel from "../Carousel";
 
 const MobileHeader = ({ title, image, images, color, textPrincipiant }) => {
   const { primaryMedium } = useTheme();
-
+  const imagesForCarrousel = images.slice(1);
   return (
     <div className="md:hidden">
       <header
@@ -16,7 +16,7 @@ const MobileHeader = ({ title, image, images, color, textPrincipiant }) => {
       >
         {images ? (
           <div className="absolute top-20 left-0 bottom-0 right-0 z-0">
-            <Carousel images={images} />
+            <Carousel images={imagesForCarrousel} />
           </div>
         ) : image ? (
           <img
@@ -35,7 +35,7 @@ const MobileHeader = ({ title, image, images, color, textPrincipiant }) => {
             <DynamicCardCell
               title="soc principiant"
               color={primaryMedium}
-              image={images[1]}
+              image={images[0]}
               textPrincipiant={textPrincipiant}
             />
           </CardSet>

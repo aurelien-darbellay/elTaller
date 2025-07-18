@@ -9,6 +9,8 @@ import { ThemeProvider } from "./contexts/ThemeProvider";
 import SignupButton from "./components/SignUpButton";
 import ButtonGroup from "./components/ButtonGroup";
 import Cultura from "./components/Cultura";
+import ScrollToHash from "./components/ScrollToHash";
+import ComingSoon from "./components/ComingSoon";
 
 export default function App() {
   return (
@@ -21,11 +23,14 @@ export default function App() {
             <WhatsappIcon />
           </ButtonGroup>
           <main className="flex-grow">
+            <ScrollToHash />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/horaris-i-tarifes" element={<ClassesSection />} />
               <Route path="/contacte" element={<ContactForm />} />
-              <Route path="racó-cultura" element={<Cultura />} />
+              <Route path="/racó-cultura" element={<Cultura />} />
+              <Route path="/faq" element={<ComingSoon />} />
+              <Route path="/workshops-i-events" element={<ComingSoon />} />
             </Routes>
           </main>
           <Footer />

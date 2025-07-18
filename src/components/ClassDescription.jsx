@@ -1,8 +1,11 @@
-import React from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import React, { useState } from "react";
+import { useTheme } from "../contexts/ThemeContext"; // Adjust path as needed
 
-const ClassDescription = ({ textClass, textPrice, textTeachers }) => {
+const ClassDescription = ({ textClass, textPrice }) => {
   const { primaryDeep } = useTheme();
+  const [isClassOpen, setClassOpen] = useState(false);
+  const [isPriceOpen, setPriceOpen] = useState(false);
+
   return (
     <div className="w-full">
       <div className="container mx-auto px-4">
@@ -12,23 +15,30 @@ const ClassDescription = ({ textClass, textPrice, textTeachers }) => {
         >
           Les Nostres Classes
         </h2>
-        <div className=" font-info grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-          {/* Left column - full height */}
-          <div className="border rounded-md p-4 col-span-1 md:col-span-1">
-            <h3 className="text-xl font-bold mb-2">Les Classes</h3>
-            <div dangerouslySetInnerHTML={{ __html: textClass }} />
+
+        <div className="font-info flex flex-col gap-4 p-4">
+          {/* Classes */}
+          <div className="border rounded-md p-4">
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => setClassOpen((prev) => !prev)}
+            >
+              <h3 className="text-xl font-bold">Les Classes</h3>
+              <span className="text-xl">{isClassOpen ? "▲" : "▼"}</span>
+            </div>
+            {isClassOpen && textClass}
           </div>
 
-          {/* Right column - split into two rows */}
-          <div className="col-span-1 md:col-span-2 grid grid-rows-2 gap-4">
-            <div className="border rounded-md p-4">
-              <h3 className="text-xl font-bold mb-2">Els Preus</h3>
-              <div dangerouslySetInnerHTML={{ __html: textPrice }} />
+          {/* Preus */}
+          <div className="border rounded-md p-4">
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => setPriceOpen((prev) => !prev)}
+            >
+              <h3 className="text-xl font-bold">Els Preus</h3>
+              <span className="text-xl">{isPriceOpen ? "▲" : "▼"}</span>
             </div>
-            <div className="border rounded-md p-4">
-              <h3 className="text-xl font-bold mb-2">Les Professores</h3>
-              <div dangerouslySetInnerHTML={{ __html: textTeachers }} />
-            </div>
+            {isPriceOpen && textPrice}
           </div>
         </div>
       </div>

@@ -1,0 +1,12 @@
+.swiper-button-next,
+.swiper-button-prev {
+  width: 28px;
+  height: 28px;
+  color: var(--primary-deep); /* optional override with CSS variable */
+  font-size: 20px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
+}

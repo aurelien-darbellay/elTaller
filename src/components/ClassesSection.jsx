@@ -1,5 +1,9 @@
+import Calendari from "./Calendari";
 import ClassDescription from "./ClassDescription";
+import ClassesInfos from "./ClassesInfo";
+import PricesInfo from "./PricesInfo";
 import SectionSchedule from "./SectionSchedule";
+import calendar from "./calendar";
 
 export function ClassesSection() {
   const salas = {
@@ -12,6 +16,9 @@ export function ClassesSection() {
       url: "https://maps.app.goo.gl/tUgHMDrGUQyjiLJk9",
     },
   };
+
+  const textClass = <ClassesInfos />;
+  const textPrice = <PricesInfo />;
 
   const scheduleData = [
     {
@@ -147,8 +154,9 @@ export function ClassesSection() {
   return (
     <section className="">
       <div className="h-30"></div>
-      <ClassDescription />
+      <ClassDescription textClass={textClass} textPrice={textPrice} />
       <SectionSchedule scheduleData={scheduleData} />
+      <Calendari calendarData={calendar} />
     </section>
   );
 }

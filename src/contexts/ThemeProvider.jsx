@@ -6,7 +6,7 @@ export const ThemeProvider = ({ children }) => {
     primaryDeep: "#da75daff",
     primaryMedium: "#da75daff",
     primaryBright: "#e662b3ff",
-    primaryLight: "#c95896ff",
+    primaryLight: "#eb99c6ff",
     creme: "creme",
     pink: "pink",
     deeppink: "deeppink",

@@ -4,8 +4,8 @@ import Carousel from "../Carousel";
 import CardSetDesktop from "../cards/CardSetDesktop";
 
 const DesktopHeader = ({ title, image, images, color, textPrincipiant }) => {
-  const { primaryBright, primaryMedium, primaryLight } = useTheme();
-  console.log(textPrincipiant);
+  const { primaryMedium } = useTheme();
+  const imagesForCarrousel = images.slice(1);
   return (
     <header className="hidden md:block relative w-full h-150 shadow-md overflow-visible">
       {/* CLIPPED BACKGROUND LAYER */}
@@ -16,7 +16,7 @@ const DesktopHeader = ({ title, image, images, color, textPrincipiant }) => {
         }}
       >
         {images ? (
-          <Carousel images={images} />
+          <Carousel images={imagesForCarrousel} />
         ) : image ? (
           <img
             src={image}
@@ -35,7 +35,7 @@ const DesktopHeader = ({ title, image, images, color, textPrincipiant }) => {
             <DynamicCard
               title="soc principiant"
               color={primaryMedium}
-              image={images[1]}
+              image={images[0]}
               textPrincipiant={textPrincipiant}
             />
           </CardSetDesktop>

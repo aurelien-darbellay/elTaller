@@ -44,7 +44,7 @@ const SectionSchedule = ({ scheduleData }) => {
         </h2>
 
         {/* Mobile layout */}
-        <div className="block md:hidden space-y-6">
+        <div id="horaris" className="block md:hidden space-y-6">
           {sortedWithClasses.map((day) => (
             <div key={day.day} className="border rounded-md p-4 shadow">
               <h3 className="text-xl font-bold text-center mb-3">

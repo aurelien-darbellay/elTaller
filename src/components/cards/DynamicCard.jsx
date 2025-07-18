@@ -26,7 +26,7 @@ const DynamicCard = ({ title, color = "pink", image, textPrincipiant }) => {
 
       {/* Hover content overlay (same design as before) */}
       <div
-        className={`${!open ? "opacity-0 z-0" : "opacity-100 z-20 -top-40"}
+        className={`${!open ? "opacity-0 z-0" : "opacity-100 z-20 -top-80"}
           transition-opacity duration-200
           relative
           flex flex-col rounded
