@@ -4,7 +4,7 @@ import { TextPrincipiant } from "./TextPrincipiant";
 
 const Header = ({ title, color }) => {
   const images = [
-    "pictures/indoor/SocPrincipiant.jpg",
+    "pictures/indoor/Desbande1.jpg",
     "pictures/indoor/CanTravi1.jpg",
     "pictures/indoor/EstelaIñaki_Olivo.jpg",
     "pictures/outdoor/Canyelles1.jpg",
