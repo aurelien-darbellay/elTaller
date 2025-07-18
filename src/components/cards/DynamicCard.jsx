@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const DynamicCard = ({ title, color = "pink", image, text }) => {
+const DynamicCard = ({ title, color = "pink", image, textPrincipiant }) => {
   const cardRef = useRef(null);
   const [open, setOpen] = useState(false);
   return (
@@ -56,13 +56,8 @@ const DynamicCard = ({ title, color = "pink", image, text }) => {
           </div>
 
           {/* Text */}
-          {text && (
-            <div className="ml-3 mr-3 mb-3 md:w-full">
-              <p
-                className="font-info"
-                dangerouslySetInnerHTML={{ __html: text }}
-              ></p>
-            </div>
+          {textPrincipiant && (
+            <div className="ml-3 mr-3 mb-3 md:w-full">{textPrincipiant}</div>
           )}
         </div>
       </div>

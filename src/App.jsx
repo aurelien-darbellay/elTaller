@@ -23,7 +23,7 @@ export default function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/classes" element={<ClassesSection />} />
+              <Route path="/horaris-i-tarifes" element={<ClassesSection />} />
               <Route path="/contacte" element={<ContactForm />} />
               <Route path="racó-cultura" element={<Cultura />} />
             </Routes>

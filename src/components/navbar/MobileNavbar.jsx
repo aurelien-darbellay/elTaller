@@ -56,7 +56,7 @@ function MobileNavbar({ isTop, menuItems, logo }) {
                   className="flex justify-center items-center text-center hover:text-white"
                   onClick={() => setIsOpen(false)}
                 >
-                  {path.replace("-", " ")}
+                  {path.replaceAll("-", " ")}
                 </Link>
               )}
             </li>

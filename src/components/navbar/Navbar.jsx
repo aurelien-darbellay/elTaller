@@ -8,9 +8,9 @@ function Navbar() {
   const [isTopDesktop, setIsTopDesktop] = useState(true);
 
   const menuItems = [
-    "classes",
+    "horaris-i-tarifes",
     "inscripcions",
-    "agenda",
+    "workshops-i-events",
     "contacte",
     "racó-cultura",
     "faq",

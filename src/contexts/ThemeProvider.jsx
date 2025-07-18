@@ -4,7 +4,7 @@ export const ThemeProvider = ({ children }) => {
   // for now just use the defaults
   const theme = {
     primaryDeep: "#da75daff",
-    primaryMedium: "#920c87ff",
+    primaryMedium: "#da75daff",
     primaryBright: "#e662b3ff",
     primaryLight: "#c95896ff",
     creme: "creme",

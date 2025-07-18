@@ -1,3 +1,4 @@
+import { ClassesSection } from "./ClassesSection";
 import Header from "./header/Header"; // adjust the path if needed
 import Section from "./Section";
 export function Home() {
@@ -14,7 +15,7 @@ export function Home() {
         images={pictures}
         color="#356269ff"
       />
-      <Section></Section>
+      <ClassesSection />
     </div>
   );
 }

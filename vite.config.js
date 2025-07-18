@@ -11,6 +11,6 @@ export default defineConfig({
     strictPort: true,
     https: false, // optional, you can use true with certs
     cors: true,
-    allowedHosts: ["5caf7e089a29.ngrok-free.app"],
+    allowedHosts: ["29609a2a4120.ngrok-free.app"],
   },
 });

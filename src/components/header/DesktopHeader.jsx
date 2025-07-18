@@ -3,13 +3,9 @@ import DynamicCard from "../cards/DynamicCard";
 import Carousel from "../Carousel";
 import CardSetDesktop from "../cards/CardSetDesktop";
 
-const DesktopHeader = ({ title, image, images, color }) => {
+const DesktopHeader = ({ title, image, images, color, textPrincipiant }) => {
   const { primaryBright, primaryMedium, primaryLight } = useTheme();
-
-  const textClasses = `A <strong>El Taller</strong> t’oferim classes de <em>Lindy Hop</em> i altres balls del jazz continuum per a tots els nivells!
-  Vine a gaudir del swing i a compartir la passió pel ball en un ambient
-  proper i comunitari.`;
-
+  console.log(textPrincipiant);
   return (
     <header className="hidden md:block relative w-full h-150 shadow-md overflow-visible">
       {/* CLIPPED BACKGROUND LAYER */}
@@ -37,22 +33,10 @@ const DesktopHeader = ({ title, image, images, color }) => {
         <div className="pt-70 z-10 flex flex-col justify-center items-start w-full h-full">
           <CardSetDesktop>
             <DynamicCard
-              title="classes"
-              color={primaryBright}
-              image={images[0]}
-              text={textClasses}
-            />
-            <DynamicCard
               title="soc principiant"
               color={primaryMedium}
               image={images[1]}
-              text={textClasses}
-            />
-            <DynamicCard
-              title="trobades"
-              color={primaryLight}
-              image={images[2]}
-              text={textClasses}
+              textPrincipiant={textPrincipiant}
             />
           </CardSetDesktop>
         </div>

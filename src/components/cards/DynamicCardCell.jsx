@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import "./Card.css";
 
-const DynamicCardCell = ({ title, color = "pink", image, text }) => {
+const DynamicCardCell = ({ title, color = "pink", image, textPrincipiant }) => {
   const [showText, setShowText] = useState(false);
   const cardRef = useRef(null);
+  const imgRef = useRef(null);
+  const textRef = useRef(null);
+  const containerRef = useRef(null);
 
+  // Scroll logic: Show text when card enters upper third
   useEffect(() => {
     const handleScroll = () => {
       if (!cardRef.current) return;
 
       const rect = cardRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-
       const upperThird = windowHeight / 3;
 
-      // Check if card is entering upper third of screen
-      const isInUpperThird = rect.top >= 0 && rect.top < upperThird;
-
-      setShowText(isInUpperThird);
+      setShowText(rect.top >= 0 && rect.top < upperThird);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -28,11 +28,22 @@ const DynamicCardCell = ({ title, color = "pink", image, text }) => {
     };
   }, []);
 
+  // Dynamically adjust container height to match the taller content
+  useLayoutEffect(() => {
+    const imageHeight = imgRef.current?.offsetHeight || 0;
+    const textHeight = textRef.current?.offsetHeight || 0;
+    const maxHeight = Math.max(imageHeight, textHeight);
+
+    if (containerRef.current) {
+      containerRef.current.style.height = `${maxHeight}px`;
+    }
+  }, [showText, image, textPrincipiant]);
+
   return (
     <div
       ref={cardRef}
       className="relative w-full rounded shadow-custom cursor-pointer p-4 overflow-hidden"
-      style={{ backgroundColor: color, height: "auto", minHeight: "300px" }}
+      style={{ backgroundColor: color }}
     >
       {/* Title */}
       <h3 className="text-center uppercase text-2xl text-white text-shadow-lg font-header mb-4 z-10 relative">
@@ -40,30 +51,32 @@ const DynamicCardCell = ({ title, color = "pink", image, text }) => {
       </h3>
 
       {/* Content container */}
-      <div className="relative w-full h-full mt-2">
-        {/* Image */}
+      <div
+        ref={containerRef}
+        className="relative w-full transition-all duration-500 ease-in-out"
+      >
+        {/* Image container */}
         <div
-          className={`inset-0 transition-clip duration-500 ease-in-out ${
+          ref={imgRef}
+          className={`absolute inset-0 w-full h-auto transition-clip duration-500 ${
             showText ? "clip-hide" : "clip-show"
           }`}
         >
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover rounded-md"
+            className="w-full h-auto object-cover rounded-md"
           />
         </div>
 
-        {/* Text */}
+        {/* Text container */}
         <div
-          className={`absolute inset-0 transition-clip duration-500 ease-in-out flex items-center text-justify px-4 ${
+          ref={textRef}
+          className={`inset-0 w-full h-auto px-4 flex items-center justify-center text-white transition-clip duration-500 ${
             showText ? "clip-show" : "clip-hide"
           }`}
         >
-          <p
-            className="font-info text-center"
-            dangerouslySetInnerHTML={{ __html: text }}
-          ></p>
+          <div className="text-justify font-info">{textPrincipiant}</div>
         </div>
       </div>
     </div>
