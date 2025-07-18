@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import MobileNavbar from "./MobileNavbar";
 import DesktopNavbar from "./DesktopNavbar";
-import logo from "../../assets/logo_black.png";
+import logo from "../../assets/Logo_black.png";
 
 function Navbar() {
   const [isTopMobile, setIsTopMobile] = useState(true);
